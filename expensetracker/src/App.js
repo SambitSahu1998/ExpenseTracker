@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import ExpenseTracker from "./component/ExpenseTracker";
+import BarChartCustomization from "./component/BarChartCustomization";
+import RecentTransaction from "./component/RecentTransaction";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div style={{ backgroundColor: "#3B3B3B", padding: "0px 20px 20px 20px" }}>
+      <div>
+        <div
+          style={{
+            color: "#FFFFFF",
+            fontSize: "2.5rem",
+            marginBottom: "0.5rem",
+            fontWeight: "bold",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <text>Expense Tracker</text>
+        </div>
+        <ExpenseTracker />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          width:"100%",
+        }}
+      >
+        <div style={{width:"65%"}}>
+          <RecentTransaction />
+        </div>
+        <div style={{width:"30%"}}>
+          <BarChartCustomization />
+        </div>
+      </div>
     </div>
   );
 }
