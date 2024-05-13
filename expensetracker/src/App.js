@@ -4,7 +4,7 @@ import RecentTransaction from "./component/RecentTransaction";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#3B3B3B", padding: "0px 20px 20px 20px" }}>
+    <div style={{ backgroundColor: "#3B3B3B", padding: "0px 20px 20px 20px", height:"98vh" }}>
       <div>
         <div
           style={{
@@ -23,13 +23,13 @@ function App() {
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "space-between",
-          width:"100%",
+          width:"100%"
         }}
       >
         <div style={{width:"65%"}}>
           <RecentTransaction />
         </div>
-        <div style={{width:"30%"}}>
+        <div style={{width:"33%"}}>
           <BarChartCustomization />
         </div>
       </div>

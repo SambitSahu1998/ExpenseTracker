@@ -16,13 +16,13 @@ const ExpenseTracker = () => {
       >
         <BalanceDivComponent
           type="Total Balance"
-          value="$1000"
+          value="₹1000"
           buttonColor="linear-gradient(90deg, #B5DC52 0%, #89E148 100%)"
           textColor="#9DFF5B"
         />
         <BalanceDivComponent
           type="Expense"
-          value="$500"
+          value="₹500"
           buttonColor="linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%)"
           textColor="#F4BB4A"
         />

@@ -32,9 +32,9 @@ export default class BarChartCustomization extends PureComponent {
       <div>
         <h2 style={{fontWeight:"700", fontStyle:"italic", color:"#FFFFFF"}}>Top Expenses</h2>
         <div
-          style={{background: "#FFFFFF", borderRadius: "5px" }}
+          style={{background: "#FFFFFF", borderRadius: "5px",padding:"10px 0px", width:"100%", minHeight:"35vh", display:"flex", alignItems:"center"}}
         >
-          <BarChart layout="vertical" width={300} height={250} data={data}>
+          <BarChart layout="vertical" width={300} height={300} data={data}>
             <XAxis type="number" hide />
             <YAxis
               type="category"
@@ -49,7 +49,7 @@ export default class BarChartCustomization extends PureComponent {
             />
             <Bar dataKey="uv" barSize={30}>
               {data.map((entry, index) => (
-                <Cell fill="#8884d8" key={`cell-${index}`} />
+                <Cell fill="#8884d8" key={`cell-${index}`}/>
               ))}
             </Bar>
           </BarChart>

@@ -1,4 +1,5 @@
-import React from "react";    
+import React from "react"; 
+import ExpensePagination from "./ExpensePagination";   
 
 const RecentTransaction = ({ data }) => {
   return (
@@ -7,9 +8,8 @@ const RecentTransaction = ({ data }) => {
         Recent Transactions
       </h2>
       <div
-        style={{ background: "#FFFFFF", borderRadius: "5px" }}>
-   
-
+        style={{ backgroundColor: "#FFFFFF", borderRadius: "5px", padding:"10px" }}>     
+          <ExpensePagination />
         </div>
     </div>
   );
