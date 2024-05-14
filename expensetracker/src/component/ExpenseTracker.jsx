@@ -2,7 +2,7 @@ import React from "react";
 import BalanceDivComponent from "./BalanceDivComponent";
 import PieChartCustomization from "./PieChartCustomization";
 
-const ExpenseTracker = () => {
+const ExpenseTracker = ({onClick}) => {
   return (
     <div>
       <div
@@ -25,6 +25,7 @@ const ExpenseTracker = () => {
           value="₹500"
           buttonColor="linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%)"
           textColor="#F4BB4A"
+          onClick={onClick}
         />
         <PieChartCustomization />
       </div>

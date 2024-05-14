@@ -32,7 +32,7 @@ export default class BarChartCustomization extends PureComponent {
       <div>
         <h2 style={{fontWeight:"700", fontStyle:"italic", color:"#FFFFFF"}}>Top Expenses</h2>
         <div
-          style={{background: "#FFFFFF", borderRadius: "5px",padding:"10px 0px", width:"100%", minHeight:"35vh", display:"flex", alignItems:"center"}}
+          style={{background: "#FFFFFF", borderRadius: "5px",padding:"10px 0px", width:"100%", minHeight:"50%", display:"flex", alignItems:"center"}}
         >
           <BarChart layout="vertical" width={300} height={300} data={data}>
             <XAxis type="number" hide />

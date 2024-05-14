@@ -3,7 +3,6 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
-import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined";
 import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
 
 const ExpensePagination = () => {
@@ -101,7 +100,7 @@ const ExpensePagination = () => {
   const handleDeleteExpense = (id) => {};
 
   return (
-    <div style={{width:"100%", height:"35vh"}}>
+    <div style={{width:"100%", height:"50%"}}>
       <table style={{ width: "100%" }}>
         <tbody>
           {currentExpenses.map((expense) => (
