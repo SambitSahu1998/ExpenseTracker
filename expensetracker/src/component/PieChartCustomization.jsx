@@ -1,11 +1,7 @@
 import React, { useMemo } from 'react';
 import { PieChart, Pie, Cell, Legend} from 'recharts';
 
-const data = [
-    { name: 'Entertainment', value: 70 },
-    { name: 'Food', value: 20 },
-    { name: 'Travel', value: 10 }
-];
+let data = [];
   
 const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
 
@@ -23,7 +19,30 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 };
 
 export default function PieChartCustomization({expenses}) {
+
+  const categories = {Entertainment:0,Food:0,Travel:0};
+
+  expenses.forEach(expense=>{
+    if(categories.hasOwnProperty(expense.category)){
+      categories[expense.category] += parseFloat(expense.price);
+    }
+  });
+
+  const totalExpense = Object.values(categories).reduce((sum,val)=>sum+val,0);
+
+  const categoryPercentage = {};
+
+  for(const[category, amount] of Object.entries(categories)){
+    categoryPercentage[category] = ((amount/ totalExpense)*100).toFixed(0);
+  }
+
+  data = Object.keys(categoryPercentage).map(key => ({
+    name:key,
+    value: parseFloat(categoryPercentage[key])
+  }));
+  
   const memoizedLabel = useMemo(()=>renderCustomizedLabel,[]);
+  
   return (
     <div>
       <PieChart width={300} height={300}>

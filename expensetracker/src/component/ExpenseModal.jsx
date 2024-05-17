@@ -1,44 +1,52 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  Modal,
-} from "@mui/material";
+import { Box, Button, Typography, Modal } from "@mui/material";
 import "./ExpenseModal.css";
 
-const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing}) => {
-
+const ExpenseModal = ({
+  open,
+  handleClose,
+  expense,
+  handleAddExpense,
+  isEditing,
+}) => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [dateOfExpense, setDateOfExpense] = useState("");
-  
 
-  useEffect(()=>{
-    if(isEditing && expense){
+  useEffect(() => {
+    if (isEditing) {
       setTitle(expense.title);
       setPrice(expense.price);
       setCategory(expense.category);
       setDateOfExpense(expense.dateOfExpense);
-    }else{
+    } else {
       setTitle("");
       setPrice("");
       setCategory("");
       setDateOfExpense("");
     }
-  },[isEditing, expense]);
+  }, [isEditing, expense]);
 
-  
   const handleActionClick = () => {
-    if(isEditing){
-      const updatedExpenseData = {id:expense.id, title,price,category, dateOfExpense};
+    if (isEditing) {
+      const updatedExpenseData = {
+        id: expense.id,
+        title,
+        price,
+        category,
+        dateOfExpense,
+      };
       handleAddExpense(updatedExpenseData);
     } else {
-      const newExpenseData = {title,price,category, dateOfExpense};
+      const newExpenseData = { title, price, category, dateOfExpense };
       handleAddExpense(newExpenseData);
     }
     handleClose();
+    setTitle("");
+    setPrice("");
+    setCategory("");
+    setDateOfExpense("");
   };
 
   return (
@@ -69,7 +77,7 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
             mb={2}
             id="modal-modal-title"
           >
-            {isEditing?"Edit Expense":"Add Expense"}
+            {isEditing ? "Edit Expense" : "Add Expense"}
           </Typography>
           <Box
             sx={{
@@ -83,7 +91,7 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
               type="text"
               placeholder="Title"
               value={title}
-              onChange={(e)=>setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
               style={{
                 width: "40%",
                 borderRadius: "15px",
@@ -96,7 +104,7 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
               type="number"
               placeholder="Price"
               value={price}
-              onChange={(e)=>setPrice(e.target.value)}
+              onChange={(e) => setPrice(e.target.value)}
               style={{
                 width: "40%",
                 borderRadius: "15px",
@@ -117,7 +125,7 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
             <select
               name="Select Category"
               value={category}
-              onChange={(e)=>setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
               style={{
                 width: "47%",
                 borderRadius: "15px",
@@ -126,7 +134,9 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
                 boxShadow: "0 0 10px #777777",
               }}
             >
-              <option value="" disabled style={{color: "#999"}}>Select Category</option>
+              <option value="" disabled style={{ color: "#999" }}>
+                Select Category
+              </option>
               <option value="Entertainment">Entertainment</option>
               <option value="Food">Food</option>
               <option value="Travel">Travel</option>
@@ -134,7 +144,9 @@ const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing})
             <input
               type="date"
               value={dateOfExpense}
-              onChange={(e)=>{setDateOfExpense(e.target.value)}}
+              onChange={(e) => {
+                setDateOfExpense(e.target.value);
+              }}
               style={{
                 width: "40%",
                 borderRadius: "15px",

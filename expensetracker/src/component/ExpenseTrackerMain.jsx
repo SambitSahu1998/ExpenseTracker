@@ -153,7 +153,7 @@ const ExpenseTrackerMain = () => {
           />
         </div>
         <div style={{ width: "33%" }}>
-          <BarChartCustomization />
+          <BarChartCustomization expenses={expenses}/>
         </div>
       </div>
       <ExpenseModal
