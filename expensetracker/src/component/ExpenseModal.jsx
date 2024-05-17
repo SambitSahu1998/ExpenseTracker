@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -7,14 +7,42 @@ import {
 } from "@mui/material";
 import "./ExpenseModal.css";
 
-const ExpenseModal = ({}) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const ExpenseModal = ({open, handleClose, expense, handleAddExpense, isEditing}) => {
+
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [dateOfExpense, setDateOfExpense] = useState("");
+  
+
+  useEffect(()=>{
+    if(isEditing && expense){
+      setTitle(expense.title);
+      setPrice(expense.price);
+      setCategory(expense.category);
+      setDateOfExpense(expense.dateOfExpense);
+    }else{
+      setTitle("");
+      setPrice("");
+      setCategory("");
+      setDateOfExpense("");
+    }
+  },[isEditing, expense]);
+
+  
+  const handleActionClick = () => {
+    if(isEditing){
+      const updatedExpenseData = {id:expense.id, title,price,category, dateOfExpense};
+      handleAddExpense(updatedExpenseData);
+    } else {
+      const newExpenseData = {title,price,category, dateOfExpense};
+      handleAddExpense(newExpenseData);
+    }
+    handleClose();
+  };
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -41,7 +69,7 @@ const ExpenseModal = ({}) => {
             mb={2}
             id="modal-modal-title"
           >
-            Add Expense
+            {isEditing?"Edit Expense":"Add Expense"}
           </Typography>
           <Box
             sx={{
@@ -54,6 +82,8 @@ const ExpenseModal = ({}) => {
             <input
               type="text"
               placeholder="Title"
+              value={title}
+              onChange={(e)=>setTitle(e.target.value)}
               style={{
                 width: "40%",
                 borderRadius: "15px",
@@ -65,6 +95,8 @@ const ExpenseModal = ({}) => {
             <input
               type="number"
               placeholder="Price"
+              value={price}
+              onChange={(e)=>setPrice(e.target.value)}
               style={{
                 width: "40%",
                 borderRadius: "15px",
@@ -84,6 +116,8 @@ const ExpenseModal = ({}) => {
           >
             <select
               name="Select Category"
+              value={category}
+              onChange={(e)=>setCategory(e.target.value)}
               style={{
                 width: "47%",
                 borderRadius: "15px",
@@ -92,13 +126,15 @@ const ExpenseModal = ({}) => {
                 boxShadow: "0 0 10px #777777",
               }}
             >
-              <option value="" disabled selected style={{color: "#999"}}>Select Category</option>
-              <option value="Food Groceries">Food and Groceries</option>
-              <option value="Accommodation">Accommodation</option>
-              <option value="Transportation">Transportation</option>
+              <option value="" disabled style={{color: "#999"}}>Select Category</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
             </select>
             <input
               type="date"
+              value={dateOfExpense}
+              onChange={(e)=>{setDateOfExpense(e.target.value)}}
               style={{
                 width: "40%",
                 borderRadius: "15px",
@@ -122,6 +158,7 @@ const ExpenseModal = ({}) => {
                 background: "linear-gradient(0deg, #F4BB4A, #F4BB4A)",
                 boxShadow: "0 0 10px #333333",
               }}
+              onClick={handleActionClick}
             >
               Add Expense
             </Button>

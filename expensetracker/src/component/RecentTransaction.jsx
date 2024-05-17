@@ -1,7 +1,7 @@
 import React from "react"; 
 import ExpensePagination from "./ExpensePagination";   
 
-const RecentTransaction = ({ data }) => {
+const RecentTransaction = ({ expenses, onEditExpense, onDeleteExpense}) => {
   return (
     <div>
       <h2 style={{ fontWeight: "700", fontStyle: "italic", color: "#FFFFFF" }}>
@@ -9,7 +9,7 @@ const RecentTransaction = ({ data }) => {
       </h2>
       <div
         style={{ backgroundColor: "#FFFFFF", borderRadius: "5px", padding:"10px" }}>     
-          <ExpensePagination />
+          <ExpensePagination expenses={expenses} onEditExpense={onEditExpense} onDeleteExpense={onDeleteExpense} />
         </div>
     </div>
   );

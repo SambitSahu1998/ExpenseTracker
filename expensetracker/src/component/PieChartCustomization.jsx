@@ -5,9 +5,9 @@ const data = [
     { name: 'Entertainment', value: 70 },
     { name: 'Food', value: 20 },
     { name: 'Travel', value: 10 }
-    ];
+];
   
-  const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
+const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent}) => {
@@ -22,8 +22,8 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-export default function PieChartCustomization() {
-    const memoizedLabel = useMemo(()=>renderCustomizedLabel,[]);
+export default function PieChartCustomization({expenses}) {
+  const memoizedLabel = useMemo(()=>renderCustomizedLabel,[]);
   return (
     <div>
       <PieChart width={300} height={300}>

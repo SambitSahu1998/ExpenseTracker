@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { Box, Button, Typography, Modal } from "@mui/material";
 import "./ExpenseModal.css";
 
-const AddIncomeModal = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const AddIncomeModal = ({open, handleClose, addIncome}) => {
+
+  const[amount, setAmount] = useState(0);
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value);
+  }
+  const handleAddIncome = () => {
+    addIncome(amount);
+    handleClose();
+  }
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -56,6 +62,7 @@ const AddIncomeModal = () => {
                 boxShadow: "0 0 10px #777777",
                 marginRight:"0.2rem",
               }}
+              onChange={handleAmountChange}
             />
             <Box sx={{display: "flex",
               alignItems: "center",
@@ -71,6 +78,7 @@ const AddIncomeModal = () => {
                   background: "linear-gradient(0deg, #F4BB4A, #F4BB4A)",
                   boxShadow: "0 0 10px #333333",
                 }}
+                onClick={handleAddIncome}
               >
                 Add Balance
               </Button>

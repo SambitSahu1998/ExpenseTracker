@@ -1,6 +1,4 @@
-
 import ExpenseTrackerMain from "./component/ExpenseTrackerMain";
-
 
 function App() {
   return (
